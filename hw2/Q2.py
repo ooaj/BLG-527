@@ -18,6 +18,16 @@ deneme_7 = np.reshape(deneme_7, (8,8))
 plt.imshow(deneme_7, interpolation='Nearest')
 plt.show()
 
+
+# knn = KNeighborsClassifier()
+# knn.fit(train_data[:,:64], train_data[:,64]) 
+# KNeighborsClassifier(metric='euclidean',n_neighbors=5, weights='uniform')
+# print("Predictions from the classifier:")
+# print(knn.predict(test_data[:,:64]))
+# print("Target values:")
+# print(test_data[:,64])
+
+
 # Euclidean Distance 
 def dist(x,y):   
     return np.sqrt(np.sum((x-y)**2))
