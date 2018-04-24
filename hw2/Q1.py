@@ -6,7 +6,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import KMeans
 from copy import deepcopy
 
-# import data as pandas data frame
+# import data as pandas data frame, change according to your path
 train_data = pd.read_csv("/home/ooa/Belgeler/Machine Learning/HW2/Data/optdigits.tra", header=None)
 test_data = pd.read_csv("/home/ooa/Belgeler/Machine Learning/HW2/Data/optdigits.tes", header=None)
 
@@ -25,9 +25,9 @@ def dist(a, b, ax=1):
     return np.linalg.norm(a - b, axis=ax)
 
 # Weighted Euclidean Distance
-def weightedDist(a,b,w):
+def wdist(a,b,w):
     q = a-b
-    return np.sqrt((w*q*q).sum())
+    return np.sqrt(np.sum(q*np.var(q, axis=1)))
 
 # Scikit implementation for Comparison
 kmeans = KMeans(n_clusters=10, random_state=0).fit(X)
@@ -48,6 +48,7 @@ center = kmeans.cluster_centers_
 initial_center = np.zeros(center.shape)
 label = np.zeros(len(X))
 recon_error = dist(center, initial_center , None)
+weight=0
 # k-Means clustering
 while recon_error != 0:
     
@@ -70,6 +71,9 @@ print("Comparison of our algorithm with scikit =", kmeans.labels_ == label)
 print("Predicted labels are", label)
 
 # Changing the last column of the original data with the newly clustered labels
-train_data_pd[64] = label.astype(int)
-print(train_data_pd)
+#train_data_pd[64] = label.astype(int)
+#print(train_data_pd)
 
+
+df = pd.DataFrame({'Original Labels':train_data[:,64], 'K Means Labels':label.astype(int), 'SciKit Labels':kmeans.labels_})
+print(df)
