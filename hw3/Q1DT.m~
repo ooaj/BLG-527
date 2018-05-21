@@ -1,0 +1,45 @@
+% Feature Fix Depth Change 'Gini')
+clear all; clc; close all
+
+%Gini
+x_axis_depth = [3, 10, 30, 40, 50];
+val_acc_depth = [0.44729270206643995, 0.8543029034789432, 0.8535181794402302, 0.8579649489929375 , 0.8603191211090766];
+train_acc_depth = [0.4612236738698049, 0.9637075509675752, 1, 1, 1];
+
+x_axis_feature = [2, 4, 6, 8, 10, 12];
+val_acc_feature = [0.7206382422181533, 0.7899555323044729, 0.8260528380852733, 0.8286685848809835 , 0.8587496730316505, 0.8543029034789432];
+train_acc_feature = [0.8537765808808017 ,0.9244758021744186, 0.9427198311939733, 0.9480851328767752, 0.9582127352415544, 0.9637075509675752];
+
+%Entropy 
+
+figure(1)
+subplot(2,2,1)
+plot(x_axis_depth,train_acc_depth,'b',x_axis_depth,val_acc_depth,'r');
+title('Fixed Feature = 12, Depth vs Accuracies')
+xlabel('Depth')
+ylabel('Acc')
+legend('Train Acc','Val Acc')
+grid on
+subplot(2,2,2)
+plot(x_axis_feature,train_acc_feature,'b',x_axis_feature,val_acc_feature,'r');
+title('Fixed Depth = 10, Feature vs Accuracies')
+xlabel('Feature')
+ylabel('Acc')
+legend('Train Acc','Val Acc')
+grid on
+
+subplot(2,2,3)
+plot(x_axis_feature,train_acc_feature,'b',x_axis_feature,val_acc_feature,'r');
+title('Fixed Depth = 10, Feature vs Accuracies')
+xlabel('Feature')
+ylabel('Acc')
+legend('Train Acc','Val Acc')
+grid on
+
+subplot(2,2,2)
+plot(x_axis_feature,train_acc_feature,'b',x_axis_feature,val_acc_feature,'r');
+title('Fixed Depth = 10, Feature vs Accuracies')
+xlabel('Feature')
+ylabel('Acc')
+legend('Train Acc','Val Acc')
+grid on
